@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="lista_paises">
+        <s:complexType />
+      </s:element>
+      <s:element name="lista_paisesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lista_paisesResult" type="tns:ArrayOfPaises2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPaises2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Paises2" nillable="true" type="tns:Paises2" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Paises2">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PAIS" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_PAIS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMERO_HABITANTES_PAIS" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDIOMA_PREDOMINANTE_PAIS" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="insertar_pais_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_PAIS" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NUMERO_HABITANTES_PAIS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDIOMA_PREDOMINANTE_PAIS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertar_pais_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertar_pais_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_pais_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PAIS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_PAIS" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NUMERO_HABITANTES_PAIS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDIOMA_PREDOMINANTE_PAIS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_pais_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizar_pais_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_pais_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PAIS" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_pais_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="delete_pais_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="lista_capitales">
+        <s:complexType />
+      </s:element>
+      <s:element name="lista_capitalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lista_capitalesResult" type="tns:ArrayOfCapitalesPaises2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCapitalesPaises2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CapitalesPaises2" nillable="true" type="tns:CapitalesPaises2" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CapitalesPaises2">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="COD_CAPITAL" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_CAPITAL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMERO_HABITANTES_CAPITAL" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDIOMA_PREDOMINANTE_CAPITAL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PAIS" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="insertar_capital_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_CAPITAL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NUMERO_HABITANTES_CAPITAL" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDIOMA_PREDOMINANTE_CAPITAL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PAIS" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertar_capital_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertar_capital_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_capital_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="COD_CAPITAL" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_CAPITAL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NUMERO_HABITANTES_CAPITAL" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDIOMA_PREDOMINANTE_CAPITAL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PAIS" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_capital_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizar_capital_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminar_capital_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="COD_CAPITAL" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminar_capital_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminar_capital_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="lista_paisesSoapIn">
+    <wsdl:part name="parameters" element="tns:lista_paises" />
+  </wsdl:message>
+  <wsdl:message name="lista_paisesSoapOut">
+    <wsdl:part name="parameters" element="tns:lista_paisesResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertar_pais_spSoapIn">
+    <wsdl:part name="parameters" element="tns:insertar_pais_sp" />
+  </wsdl:message>
+  <wsdl:message name="insertar_pais_spSoapOut">
+    <wsdl:part name="parameters" element="tns:insertar_pais_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_pais_spSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizar_pais_sp" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_pais_spSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizar_pais_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="delete_pais_spSoapIn">
+    <wsdl:part name="parameters" element="tns:delete_pais_sp" />
+  </wsdl:message>
+  <wsdl:message name="delete_pais_spSoapOut">
+    <wsdl:part name="parameters" element="tns:delete_pais_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="lista_capitalesSoapIn">
+    <wsdl:part name="parameters" element="tns:lista_capitales" />
+  </wsdl:message>
+  <wsdl:message name="lista_capitalesSoapOut">
+    <wsdl:part name="parameters" element="tns:lista_capitalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertar_capital_spSoapIn">
+    <wsdl:part name="parameters" element="tns:insertar_capital_sp" />
+  </wsdl:message>
+  <wsdl:message name="insertar_capital_spSoapOut">
+    <wsdl:part name="parameters" element="tns:insertar_capital_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_capital_spSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizar_capital_sp" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_capital_spSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizar_capital_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminar_capital_spSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminar_capital_sp" />
+  </wsdl:message>
+  <wsdl:message name="eliminar_capital_spSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminar_capital_spResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="lista_paises">
+      <wsdl:input message="tns:lista_paisesSoapIn" />
+      <wsdl:output message="tns:lista_paisesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertar_pais_sp">
+      <wsdl:input message="tns:insertar_pais_spSoapIn" />
+      <wsdl:output message="tns:insertar_pais_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_pais_sp">
+      <wsdl:input message="tns:actualizar_pais_spSoapIn" />
+      <wsdl:output message="tns:actualizar_pais_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_pais_sp">
+      <wsdl:input message="tns:delete_pais_spSoapIn" />
+      <wsdl:output message="tns:delete_pais_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="lista_capitales">
+      <wsdl:input message="tns:lista_capitalesSoapIn" />
+      <wsdl:output message="tns:lista_capitalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertar_capital_sp">
+      <wsdl:input message="tns:insertar_capital_spSoapIn" />
+      <wsdl:output message="tns:insertar_capital_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_capital_sp">
+      <wsdl:input message="tns:actualizar_capital_spSoapIn" />
+      <wsdl:output message="tns:actualizar_capital_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminar_capital_sp">
+      <wsdl:input message="tns:eliminar_capital_spSoapIn" />
+      <wsdl:output message="tns:eliminar_capital_spSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_paises">
+      <soap:operation soapAction="http://tempuri.org/lista_paises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_pais_sp">
+      <soap:operation soapAction="http://tempuri.org/insertar_pais_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_pais_sp">
+      <soap:operation soapAction="http://tempuri.org/actualizar_pais_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_pais_sp">
+      <soap:operation soapAction="http://tempuri.org/delete_pais_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_capitales">
+      <soap:operation soapAction="http://tempuri.org/lista_capitales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_capital_sp">
+      <soap:operation soapAction="http://tempuri.org/insertar_capital_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_capital_sp">
+      <soap:operation soapAction="http://tempuri.org/actualizar_capital_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminar_capital_sp">
+      <soap:operation soapAction="http://tempuri.org/eliminar_capital_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_paises">
+      <soap12:operation soapAction="http://tempuri.org/lista_paises" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_pais_sp">
+      <soap12:operation soapAction="http://tempuri.org/insertar_pais_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_pais_sp">
+      <soap12:operation soapAction="http://tempuri.org/actualizar_pais_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_pais_sp">
+      <soap12:operation soapAction="http://tempuri.org/delete_pais_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_capitales">
+      <soap12:operation soapAction="http://tempuri.org/lista_capitales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_capital_sp">
+      <soap12:operation soapAction="http://tempuri.org/insertar_capital_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_capital_sp">
+      <soap12:operation soapAction="http://tempuri.org/actualizar_capital_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminar_capital_sp">
+      <soap12:operation soapAction="http://tempuri.org/eliminar_capital_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:14029/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:14029/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

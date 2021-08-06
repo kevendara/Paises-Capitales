@@ -1,0 +1,7 @@
+D:\Franklin - Proyecto Progra 6\LocalServices.Paises\bin\Debug\LocalServices.Paises.dll.config
+D:\Franklin - Proyecto Progra 6\LocalServices.Paises\bin\Debug\LocalServices.Paises.dll
+D:\Franklin - Proyecto Progra 6\LocalServices.Paises\bin\Debug\LocalServices.Paises.pdb
+D:\Franklin - Proyecto Progra 6\LocalServices.Paises\bin\Debug\EntityFramework.dll
+D:\Franklin - Proyecto Progra 6\LocalServices.Paises\bin\Debug\EntityFramework.xml
+D:\Franklin - Proyecto Progra 6\LocalServices.Paises\obj\Debug\LocalServices.Paises.dll
+D:\Franklin - Proyecto Progra 6\LocalServices.Paises\obj\Debug\LocalServices.Paises.pdb

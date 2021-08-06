@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAISES_CAPITALESModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CapaEntityFrameworkPaises" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="CAPITALES_PAISES" EntityType="PAISES_CAPITALESModel.CAPITALES_PAISES" />
+    <EntitySet Name="PAISES" EntityType="PAISES_CAPITALESModel.PAISES" />
+    <AssociationSet Name="FK__CAPITALES__CODIG__1273C1CD" Association="PAISES_CAPITALESModel.FK__CAPITALES__CODIG__1273C1CD">
+      <End Role="PAISES" EntitySet="PAISES" />
+      <End Role="CAPITALES_PAISES" EntitySet="CAPITALES_PAISES" />
+    </AssociationSet>
+    <FunctionImport Name="CREATE_CAPITAL">
+      <Parameter Name="NOMBRE_CAPITAL" Mode="In" Type="String" />
+      <Parameter Name="NUMERO_HABITANTES_CAPITAL" Mode="In" Type="Int32" />
+      <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Mode="In" Type="String" />
+      <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CREATE_PAIS">
+      <Parameter Name="NOMBRE_PAIS" Mode="In" Type="String" />
+      <Parameter Name="NUMERO_HABITANTES_PAIS" Mode="In" Type="Int32" />
+      <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DELETE_CAPITAL">
+      <Parameter Name="COD_CAPITAL" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DELETE_PAIS">
+      <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SELECT_CAPITAL" ReturnType="Collection(PAISES_CAPITALESModel.SELECT_CAPITAL_Result)">
+      <Parameter Name="COD_CAPITAL" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="select_CAPITALES" ReturnType="Collection(PAISES_CAPITALESModel.select_CAPITALES_Result)" />
+    <FunctionImport Name="SELECT_PAIS" ReturnType="Collection(PAISES_CAPITALESModel.SELECT_PAIS_Result)">
+      <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="select_PAISES" ReturnType="Collection(PAISES_CAPITALESModel.select_PAISES_Result)" />
+    <FunctionImport Name="UPDATE_CAPITAL">
+      <Parameter Name="COD_CAPITAL" Mode="In" Type="Int32" />
+      <Parameter Name="NOMBRE_CAPITAL" Mode="In" Type="String" />
+      <Parameter Name="NUMERO_HABITANTES_CAPITAL" Mode="In" Type="Int32" />
+      <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Mode="In" Type="String" />
+      <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATE_PAIS">
+      <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+      <Parameter Name="NOMBRE_PAIS" Mode="In" Type="String" />
+      <Parameter Name="NUMERO_HABITANTES_PAIS" Mode="In" Type="Int32" />
+      <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="CAPITALES_PAISES">
+    <Key>
+      <PropertyRef Name="COD_CAPITAL" />
+    </Key>
+    <Property Name="COD_CAPITAL" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_CAPITAL" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="NUMERO_HABITANTES_CAPITAL" Type="Int32" Nullable="false" />
+    <Property Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CODIGO_PAIS" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PAISES" Relationship="PAISES_CAPITALESModel.FK__CAPITALES__CODIG__1273C1CD" FromRole="CAPITALES_PAISES" ToRole="PAISES" />
+  </EntityType>
+  <EntityType Name="PAISES">
+    <Key>
+      <PropertyRef Name="CODIGO_PAIS" />
+    </Key>
+    <Property Name="CODIGO_PAIS" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_PAIS" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="NUMERO_HABITANTES_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="IDIOMA_PREDOMINANTE_PAIS" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CAPITALES_PAISES" Relationship="PAISES_CAPITALESModel.FK__CAPITALES__CODIG__1273C1CD" FromRole="PAISES" ToRole="CAPITALES_PAISES" />
+  </EntityType>
+  <Association Name="FK__CAPITALES__CODIG__1273C1CD">
+    <End Role="PAISES" Type="PAISES_CAPITALESModel.PAISES" Multiplicity="1" />
+    <End Role="CAPITALES_PAISES" Type="PAISES_CAPITALESModel.CAPITALES_PAISES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAISES">
+        <PropertyRef Name="CODIGO_PAIS" />
+      </Principal>
+      <Dependent Role="CAPITALES_PAISES">
+        <PropertyRef Name="CODIGO_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SELECT_CAPITAL_Result">
+    <Property Type="Int32" Name="COD_CAPITAL" Nullable="false" />
+    <Property Type="String" Name="NOMBRE_CAPITAL" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="NUMERO_HABITANTES_CAPITAL" Nullable="false" />
+    <Property Type="String" Name="IDIOMA_PREDOMINANTE_CAPITAL" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="select_CAPITALES_Result">
+    <Property Type="Int32" Name="COD_CAPITAL" Nullable="false" />
+    <Property Type="String" Name="NOMBRE_CAPITAL" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="NUMERO_HABITANTES_CAPITAL" Nullable="false" />
+    <Property Type="String" Name="IDIOMA_PREDOMINANTE_CAPITAL" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SELECT_PAIS_Result">
+    <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+    <Property Type="String" Name="NOMBRE_PAIS" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="NUMERO_HABITANTES_PAIS" Nullable="false" />
+    <Property Type="String" Name="IDIOMA_PREDOMINANTE_PAIS" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="select_PAISES_Result">
+    <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+    <Property Type="String" Name="NOMBRE_PAIS" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="NUMERO_HABITANTES_PAIS" Nullable="false" />
+    <Property Type="String" Name="IDIOMA_PREDOMINANTE_PAIS" Nullable="false" MaxLength="100" />
+  </ComplexType>
+</Schema>

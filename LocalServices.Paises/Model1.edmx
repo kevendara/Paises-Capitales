@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PAISES_CAPITALESModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="PAISES_CAPITALESModelStoreContainer">
+          <EntitySet Name="CAPITALES_PAISES" EntityType="PAISES_CAPITALESModel.Store.CAPITALES_PAISES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PAISES" EntityType="PAISES_CAPITALESModel.Store.PAISES" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__CAPITALES__CODIG__1273C1CD" Association="PAISES_CAPITALESModel.Store.FK__CAPITALES__CODIG__1273C1CD">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="CAPITALES_PAISES" EntitySet="CAPITALES_PAISES" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CAPITALES_PAISES">
+          <Key>
+            <PropertyRef Name="COD_CAPITAL" />
+          </Key>
+          <Property Name="COD_CAPITAL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_CAPITAL" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="NUMERO_HABITANTES_CAPITAL" Type="int" Nullable="false" />
+          <Property Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CODIGO_PAIS" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAISES">
+          <Key>
+            <PropertyRef Name="CODIGO_PAIS" />
+          </Key>
+          <Property Name="CODIGO_PAIS" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_PAIS" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="NUMERO_HABITANTES_PAIS" Type="int" Nullable="false" />
+          <Property Name="IDIOMA_PREDOMINANTE_PAIS" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__CAPITALES__CODIG__1273C1CD">
+          <End Role="PAISES" Type="PAISES_CAPITALESModel.Store.PAISES" Multiplicity="1" />
+          <End Role="CAPITALES_PAISES" Type="PAISES_CAPITALESModel.Store.CAPITALES_PAISES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="CODIGO_PAIS" />
+            </Principal>
+            <Dependent Role="CAPITALES_PAISES">
+              <PropertyRef Name="CODIGO_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CREATE_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NOMBRE_CAPITAL" Type="varchar" Mode="In" />
+          <Parameter Name="NUMERO_HABITANTES_CAPITAL" Type="int" Mode="In" />
+          <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="varchar" Mode="In" />
+          <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CREATE_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NOMBRE_PAIS" Type="varchar" Mode="In" />
+          <Parameter Name="NUMERO_HABITANTES_PAIS" Type="int" Mode="In" />
+          <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DELETE_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COD_CAPITAL" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DELETE_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SELECT_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COD_CAPITAL" Type="int" Mode="In" />
+        </Function>
+        <Function Name="select_CAPITALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SELECT_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="select_PAISES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UPDATE_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COD_CAPITAL" Type="int" Mode="In" />
+          <Parameter Name="NOMBRE_CAPITAL" Type="varchar" Mode="In" />
+          <Parameter Name="NUMERO_HABITANTES_CAPITAL" Type="int" Mode="In" />
+          <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="varchar" Mode="In" />
+          <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UPDATE_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+          <Parameter Name="NOMBRE_PAIS" Type="varchar" Mode="In" />
+          <Parameter Name="NUMERO_HABITANTES_PAIS" Type="int" Mode="In" />
+          <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Type="varchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PAISES_CAPITALESModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CapaEntityFrameworkPaises" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CAPITALES_PAISES" EntityType="PAISES_CAPITALESModel.CAPITALES_PAISES" />
+          <EntitySet Name="PAISES" EntityType="PAISES_CAPITALESModel.PAISES" />
+          <AssociationSet Name="FK__CAPITALES__CODIG__1273C1CD" Association="PAISES_CAPITALESModel.FK__CAPITALES__CODIG__1273C1CD">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="CAPITALES_PAISES" EntitySet="CAPITALES_PAISES" />
+          </AssociationSet>
+          <FunctionImport Name="CREATE_CAPITAL">
+            <Parameter Name="NOMBRE_CAPITAL" Mode="In" Type="String" />
+            <Parameter Name="NUMERO_HABITANTES_CAPITAL" Mode="In" Type="Int32" />
+            <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Mode="In" Type="String" />
+            <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CREATE_PAIS">
+            <Parameter Name="NOMBRE_PAIS" Mode="In" Type="String" />
+            <Parameter Name="NUMERO_HABITANTES_PAIS" Mode="In" Type="Int32" />
+            <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETE_CAPITAL">
+          <Parameter Name="COD_CAPITAL" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DELETE_PAIS">
+          <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SELECT_CAPITAL" ReturnType="Collection(PAISES_CAPITALESModel.SELECT_CAPITAL_Result)">
+          <Parameter Name="COD_CAPITAL" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="select_CAPITALES" ReturnType="Collection(PAISES_CAPITALESModel.select_CAPITALES_Result)" />
+          <FunctionImport Name="SELECT_PAIS" ReturnType="Collection(PAISES_CAPITALESModel.SELECT_PAIS_Result)">
+          <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="select_PAISES" ReturnType="Collection(PAISES_CAPITALESModel.select_PAISES_Result)" />
+          <FunctionImport Name="UPDATE_CAPITAL">
+            <Parameter Name="COD_CAPITAL" Mode="In" Type="Int32" />
+            <Parameter Name="NOMBRE_CAPITAL" Mode="In" Type="String" />
+            <Parameter Name="NUMERO_HABITANTES_CAPITAL" Mode="In" Type="Int32" />
+            <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Mode="In" Type="String" />
+            <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATE_PAIS">
+            <Parameter Name="CODIGO_PAIS" Mode="In" Type="Int32" />
+            <Parameter Name="NOMBRE_PAIS" Mode="In" Type="String" />
+            <Parameter Name="NUMERO_HABITANTES_PAIS" Mode="In" Type="Int32" />
+            <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="CAPITALES_PAISES">
+          <Key>
+            <PropertyRef Name="COD_CAPITAL" />
+          </Key>
+          <Property Name="COD_CAPITAL" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_CAPITAL" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="NUMERO_HABITANTES_CAPITAL" Type="Int32" Nullable="false" />
+          <Property Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CODIGO_PAIS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PAISES" Relationship="PAISES_CAPITALESModel.FK__CAPITALES__CODIG__1273C1CD" FromRole="CAPITALES_PAISES" ToRole="PAISES" />
+        </EntityType>
+        <EntityType Name="PAISES">
+          <Key>
+            <PropertyRef Name="CODIGO_PAIS" />
+          </Key>
+          <Property Name="CODIGO_PAIS" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_PAIS" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="NUMERO_HABITANTES_PAIS" Type="Int32" Nullable="false" />
+          <Property Name="IDIOMA_PREDOMINANTE_PAIS" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CAPITALES_PAISES" Relationship="PAISES_CAPITALESModel.FK__CAPITALES__CODIG__1273C1CD" FromRole="PAISES" ToRole="CAPITALES_PAISES" />
+        </EntityType>
+        <Association Name="FK__CAPITALES__CODIG__1273C1CD">
+          <End Role="PAISES" Type="PAISES_CAPITALESModel.PAISES" Multiplicity="1" />
+          <End Role="CAPITALES_PAISES" Type="PAISES_CAPITALESModel.CAPITALES_PAISES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="CODIGO_PAIS" />
+            </Principal>
+            <Dependent Role="CAPITALES_PAISES">
+              <PropertyRef Name="CODIGO_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SELECT_CAPITAL_Result">
+          <Property Type="Int32" Name="COD_CAPITAL" Nullable="false" />
+          <Property Type="String" Name="NOMBRE_CAPITAL" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="NUMERO_HABITANTES_CAPITAL" Nullable="false" />
+          <Property Type="String" Name="IDIOMA_PREDOMINANTE_CAPITAL" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="select_CAPITALES_Result">
+          <Property Type="Int32" Name="COD_CAPITAL" Nullable="false" />
+          <Property Type="String" Name="NOMBRE_CAPITAL" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="NUMERO_HABITANTES_CAPITAL" Nullable="false" />
+          <Property Type="String" Name="IDIOMA_PREDOMINANTE_CAPITAL" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SELECT_PAIS_Result">
+          <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+          <Property Type="String" Name="NOMBRE_PAIS" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="NUMERO_HABITANTES_PAIS" Nullable="false" />
+          <Property Type="String" Name="IDIOMA_PREDOMINANTE_PAIS" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="select_PAISES_Result">
+          <Property Type="Int32" Name="CODIGO_PAIS" Nullable="false" />
+          <Property Type="String" Name="NOMBRE_PAIS" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="NUMERO_HABITANTES_PAIS" Nullable="false" />
+          <Property Type="String" Name="IDIOMA_PREDOMINANTE_PAIS" Nullable="false" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PAISES_CAPITALESModelStoreContainer" CdmEntityContainer="CapaEntityFrameworkPaises">
+          <EntitySetMapping Name="CAPITALES_PAISES">
+            <EntityTypeMapping TypeName="PAISES_CAPITALESModel.CAPITALES_PAISES">
+              <MappingFragment StoreEntitySet="CAPITALES_PAISES">
+                <ScalarProperty Name="COD_CAPITAL" ColumnName="COD_CAPITAL" />
+                <ScalarProperty Name="NOMBRE_CAPITAL" ColumnName="NOMBRE_CAPITAL" />
+                <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ColumnName="NUMERO_HABITANTES_CAPITAL" />
+                <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ColumnName="IDIOMA_PREDOMINANTE_CAPITAL" />
+                <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PAISES_CAPITALESModel.CAPITALES_PAISES">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="PAISES_CAPITALESModel.Store.CREATE_CAPITAL">
+                  <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" />
+                  <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ParameterName="IDIOMA_PREDOMINANTE_CAPITAL" />
+                  <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ParameterName="NUMERO_HABITANTES_CAPITAL" />
+                  <ScalarProperty Name="NOMBRE_CAPITAL" ParameterName="NOMBRE_CAPITAL" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="PAISES_CAPITALESModel.Store.UPDATE_CAPITAL">
+                  <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" Version="Current" />
+                  <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ParameterName="IDIOMA_PREDOMINANTE_CAPITAL" Version="Current" />
+                  <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ParameterName="NUMERO_HABITANTES_CAPITAL" Version="Current" />
+                  <ScalarProperty Name="NOMBRE_CAPITAL" ParameterName="NOMBRE_CAPITAL" Version="Current" />
+                  <ScalarProperty Name="COD_CAPITAL" ParameterName="COD_CAPITAL" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="PAISES_CAPITALESModel.Store.DELETE_CAPITAL">
+                  <ScalarProperty Name="COD_CAPITAL" ParameterName="COD_CAPITAL" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAISES">
+            <EntityTypeMapping TypeName="PAISES_CAPITALESModel.PAISES">
+              <MappingFragment StoreEntitySet="PAISES">
+                <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+                <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
+                <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ColumnName="NUMERO_HABITANTES_PAIS" />
+                <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ColumnName="IDIOMA_PREDOMINANTE_PAIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PAISES_CAPITALESModel.PAISES">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="PAISES_CAPITALESModel.Store.CREATE_PAIS">
+                  <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ParameterName="IDIOMA_PREDOMINANTE_PAIS" />
+                  <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ParameterName="NUMERO_HABITANTES_PAIS" />
+                  <ScalarProperty Name="NOMBRE_PAIS" ParameterName="NOMBRE_PAIS" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="PAISES_CAPITALESModel.Store.UPDATE_PAIS">
+                  <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ParameterName="IDIOMA_PREDOMINANTE_PAIS" Version="Current" />
+                  <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ParameterName="NUMERO_HABITANTES_PAIS" Version="Current" />
+                  <ScalarProperty Name="NOMBRE_PAIS" ParameterName="NOMBRE_PAIS" Version="Current" />
+                  <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="PAISES_CAPITALESModel.Store.DELETE_PAIS">
+                  <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CREATE_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.CREATE_CAPITAL" />
+          <FunctionImportMapping FunctionImportName="CREATE_PAIS" FunctionName="PAISES_CAPITALESModel.Store.CREATE_PAIS" />
+          <FunctionImportMapping FunctionImportName="DELETE_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.DELETE_CAPITAL" />
+          <FunctionImportMapping FunctionImportName="DELETE_PAIS" FunctionName="PAISES_CAPITALESModel.Store.DELETE_PAIS" />
+          <FunctionImportMapping FunctionImportName="SELECT_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.SELECT_CAPITAL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.SELECT_CAPITAL_Result">
+                <ScalarProperty Name="COD_CAPITAL" ColumnName="COD_CAPITAL" />
+                <ScalarProperty Name="NOMBRE_CAPITAL" ColumnName="NOMBRE_CAPITAL" />
+                <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ColumnName="NUMERO_HABITANTES_CAPITAL" />
+                <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ColumnName="IDIOMA_PREDOMINANTE_CAPITAL" />
+                <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="select_CAPITALES" FunctionName="PAISES_CAPITALESModel.Store.select_CAPITALES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.select_CAPITALES_Result">
+                <ScalarProperty Name="COD_CAPITAL" ColumnName="COD_CAPITAL" />
+                <ScalarProperty Name="NOMBRE_CAPITAL" ColumnName="NOMBRE_CAPITAL" />
+                <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ColumnName="NUMERO_HABITANTES_CAPITAL" />
+                <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ColumnName="IDIOMA_PREDOMINANTE_CAPITAL" />
+                <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SELECT_PAIS" FunctionName="PAISES_CAPITALESModel.Store.SELECT_PAIS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.SELECT_PAIS_Result">
+                <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+                <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
+                <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ColumnName="NUMERO_HABITANTES_PAIS" />
+                <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ColumnName="IDIOMA_PREDOMINANTE_PAIS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="select_PAISES" FunctionName="PAISES_CAPITALESModel.Store.select_PAISES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.select_PAISES_Result">
+                <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+                <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
+                <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ColumnName="NUMERO_HABITANTES_PAIS" />
+                <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ColumnName="IDIOMA_PREDOMINANTE_PAIS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UPDATE_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.UPDATE_CAPITAL" />
+          <FunctionImportMapping FunctionImportName="UPDATE_PAIS" FunctionName="PAISES_CAPITALESModel.Store.UPDATE_PAIS" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

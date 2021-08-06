@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAISES_CAPITALESModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PAISES_CAPITALESModelStoreContainer">
+    <EntitySet Name="CAPITALES_PAISES" EntityType="PAISES_CAPITALESModel.Store.CAPITALES_PAISES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PAISES" EntityType="PAISES_CAPITALESModel.Store.PAISES" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__CAPITALES__CODIG__1273C1CD" Association="PAISES_CAPITALESModel.Store.FK__CAPITALES__CODIG__1273C1CD">
+      <End Role="PAISES" EntitySet="PAISES" />
+      <End Role="CAPITALES_PAISES" EntitySet="CAPITALES_PAISES" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CAPITALES_PAISES">
+    <Key>
+      <PropertyRef Name="COD_CAPITAL" />
+    </Key>
+    <Property Name="COD_CAPITAL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_CAPITAL" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="NUMERO_HABITANTES_CAPITAL" Type="int" Nullable="false" />
+    <Property Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CODIGO_PAIS" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PAISES">
+    <Key>
+      <PropertyRef Name="CODIGO_PAIS" />
+    </Key>
+    <Property Name="CODIGO_PAIS" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_PAIS" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="NUMERO_HABITANTES_PAIS" Type="int" Nullable="false" />
+    <Property Name="IDIOMA_PREDOMINANTE_PAIS" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__CAPITALES__CODIG__1273C1CD">
+    <End Role="PAISES" Type="PAISES_CAPITALESModel.Store.PAISES" Multiplicity="1" />
+    <End Role="CAPITALES_PAISES" Type="PAISES_CAPITALESModel.Store.CAPITALES_PAISES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAISES">
+        <PropertyRef Name="CODIGO_PAIS" />
+      </Principal>
+      <Dependent Role="CAPITALES_PAISES">
+        <PropertyRef Name="CODIGO_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CREATE_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRE_CAPITAL" Type="varchar" Mode="In" />
+    <Parameter Name="NUMERO_HABITANTES_CAPITAL" Type="int" Mode="In" />
+    <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="varchar" Mode="In" />
+    <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CREATE_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRE_PAIS" Type="varchar" Mode="In" />
+    <Parameter Name="NUMERO_HABITANTES_PAIS" Type="int" Mode="In" />
+    <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DELETE_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COD_CAPITAL" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DELETE_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SELECT_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COD_CAPITAL" Type="int" Mode="In" />
+  </Function>
+  <Function Name="select_CAPITALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SELECT_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+  </Function>
+  <Function Name="select_PAISES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UPDATE_CAPITAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COD_CAPITAL" Type="int" Mode="In" />
+    <Parameter Name="NOMBRE_CAPITAL" Type="varchar" Mode="In" />
+    <Parameter Name="NUMERO_HABITANTES_CAPITAL" Type="int" Mode="In" />
+    <Parameter Name="IDIOMA_PREDOMINANTE_CAPITAL" Type="varchar" Mode="In" />
+    <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UPDATE_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CODIGO_PAIS" Type="int" Mode="In" />
+    <Parameter Name="NOMBRE_PAIS" Type="varchar" Mode="In" />
+    <Parameter Name="NUMERO_HABITANTES_PAIS" Type="int" Mode="In" />
+    <Parameter Name="IDIOMA_PREDOMINANTE_PAIS" Type="varchar" Mode="In" />
+  </Function>
+</Schema>

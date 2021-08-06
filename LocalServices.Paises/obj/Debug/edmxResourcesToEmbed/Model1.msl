@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PAISES_CAPITALESModelStoreContainer" CdmEntityContainer="CapaEntityFrameworkPaises">
+    <EntitySetMapping Name="CAPITALES_PAISES">
+      <EntityTypeMapping TypeName="PAISES_CAPITALESModel.CAPITALES_PAISES">
+        <MappingFragment StoreEntitySet="CAPITALES_PAISES">
+          <ScalarProperty Name="COD_CAPITAL" ColumnName="COD_CAPITAL" />
+          <ScalarProperty Name="NOMBRE_CAPITAL" ColumnName="NOMBRE_CAPITAL" />
+          <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ColumnName="NUMERO_HABITANTES_CAPITAL" />
+          <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ColumnName="IDIOMA_PREDOMINANTE_CAPITAL" />
+          <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="PAISES_CAPITALESModel.CAPITALES_PAISES">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="PAISES_CAPITALESModel.Store.CREATE_CAPITAL">
+            <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" />
+            <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ParameterName="IDIOMA_PREDOMINANTE_CAPITAL" />
+            <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ParameterName="NUMERO_HABITANTES_CAPITAL" />
+            <ScalarProperty Name="NOMBRE_CAPITAL" ParameterName="NOMBRE_CAPITAL" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="PAISES_CAPITALESModel.Store.UPDATE_CAPITAL">
+            <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" Version="Current" />
+            <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ParameterName="IDIOMA_PREDOMINANTE_CAPITAL" Version="Current" />
+            <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ParameterName="NUMERO_HABITANTES_CAPITAL" Version="Current" />
+            <ScalarProperty Name="NOMBRE_CAPITAL" ParameterName="NOMBRE_CAPITAL" Version="Current" />
+            <ScalarProperty Name="COD_CAPITAL" ParameterName="COD_CAPITAL" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="PAISES_CAPITALESModel.Store.DELETE_CAPITAL">
+            <ScalarProperty Name="COD_CAPITAL" ParameterName="COD_CAPITAL" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAISES">
+      <EntityTypeMapping TypeName="PAISES_CAPITALESModel.PAISES">
+        <MappingFragment StoreEntitySet="PAISES">
+          <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+          <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
+          <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ColumnName="NUMERO_HABITANTES_PAIS" />
+          <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ColumnName="IDIOMA_PREDOMINANTE_PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="PAISES_CAPITALESModel.PAISES">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="PAISES_CAPITALESModel.Store.CREATE_PAIS">
+            <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ParameterName="IDIOMA_PREDOMINANTE_PAIS" />
+            <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ParameterName="NUMERO_HABITANTES_PAIS" />
+            <ScalarProperty Name="NOMBRE_PAIS" ParameterName="NOMBRE_PAIS" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="PAISES_CAPITALESModel.Store.UPDATE_PAIS">
+            <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ParameterName="IDIOMA_PREDOMINANTE_PAIS" Version="Current" />
+            <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ParameterName="NUMERO_HABITANTES_PAIS" Version="Current" />
+            <ScalarProperty Name="NOMBRE_PAIS" ParameterName="NOMBRE_PAIS" Version="Current" />
+            <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="PAISES_CAPITALESModel.Store.DELETE_PAIS">
+            <ScalarProperty Name="CODIGO_PAIS" ParameterName="CODIGO_PAIS" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CREATE_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.CREATE_CAPITAL" />
+    <FunctionImportMapping FunctionImportName="CREATE_PAIS" FunctionName="PAISES_CAPITALESModel.Store.CREATE_PAIS" />
+    <FunctionImportMapping FunctionImportName="DELETE_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.DELETE_CAPITAL" />
+    <FunctionImportMapping FunctionImportName="DELETE_PAIS" FunctionName="PAISES_CAPITALESModel.Store.DELETE_PAIS" />
+    <FunctionImportMapping FunctionImportName="SELECT_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.SELECT_CAPITAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.SELECT_CAPITAL_Result">
+          <ScalarProperty Name="COD_CAPITAL" ColumnName="COD_CAPITAL" />
+          <ScalarProperty Name="NOMBRE_CAPITAL" ColumnName="NOMBRE_CAPITAL" />
+          <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ColumnName="NUMERO_HABITANTES_CAPITAL" />
+          <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ColumnName="IDIOMA_PREDOMINANTE_CAPITAL" />
+          <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="select_CAPITALES" FunctionName="PAISES_CAPITALESModel.Store.select_CAPITALES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.select_CAPITALES_Result">
+          <ScalarProperty Name="COD_CAPITAL" ColumnName="COD_CAPITAL" />
+          <ScalarProperty Name="NOMBRE_CAPITAL" ColumnName="NOMBRE_CAPITAL" />
+          <ScalarProperty Name="NUMERO_HABITANTES_CAPITAL" ColumnName="NUMERO_HABITANTES_CAPITAL" />
+          <ScalarProperty Name="IDIOMA_PREDOMINANTE_CAPITAL" ColumnName="IDIOMA_PREDOMINANTE_CAPITAL" />
+          <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECT_PAIS" FunctionName="PAISES_CAPITALESModel.Store.SELECT_PAIS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.SELECT_PAIS_Result">
+          <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+          <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
+          <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ColumnName="NUMERO_HABITANTES_PAIS" />
+          <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ColumnName="IDIOMA_PREDOMINANTE_PAIS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="select_PAISES" FunctionName="PAISES_CAPITALESModel.Store.select_PAISES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAISES_CAPITALESModel.select_PAISES_Result">
+          <ScalarProperty Name="CODIGO_PAIS" ColumnName="CODIGO_PAIS" />
+          <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
+          <ScalarProperty Name="NUMERO_HABITANTES_PAIS" ColumnName="NUMERO_HABITANTES_PAIS" />
+          <ScalarProperty Name="IDIOMA_PREDOMINANTE_PAIS" ColumnName="IDIOMA_PREDOMINANTE_PAIS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UPDATE_CAPITAL" FunctionName="PAISES_CAPITALESModel.Store.UPDATE_CAPITAL" />
+    <FunctionImportMapping FunctionImportName="UPDATE_PAIS" FunctionName="PAISES_CAPITALESModel.Store.UPDATE_PAIS" />
+  </EntityContainerMapping>
+</Mapping>
